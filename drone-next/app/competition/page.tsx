@@ -11,7 +11,7 @@ export default function Competition() {
       />
 
       {/* Competition Title */}
-      <div className="left-[540px] top-[195px] absolute text-[#2364aa] text-3xl font-bold font-['Inria Sans'] underline">
+      <div className="left-[557px] top-[195px] absolute text-[#2364aa] text-3xl font-bold font-['Inria Sans'] underline">
         Competition
       </div>
 
