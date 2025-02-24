@@ -1,6 +1,5 @@
-
-
 import React from 'react';
+import logo from "../assets/logo.png";
 
 export default function MeetOurTeam() {
   return (
@@ -9,13 +8,8 @@ export default function MeetOurTeam() {
       <div className="w-[1280px] h-[142px] left-0 top-0 absolute opacity-50 bg-[#88dae7] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]" />
       <img
         className="w-[126.41px] h-[115px] left-[28px] top-[13px] absolute"
-        src="https://placehold.co/126x115"
+        src={logo.src}
         alt="Club Logo"
-      />
-      <img
-        className="w-[72px] h-[72px] left-[1164px] top-[42px] absolute"
-        src="https://placehold.co/72x72"
-        alt="Menu Icon"
       />
       
       <div className="w-[865px] h-[81px] absolute top-[53px] left-[207px] text-center text-black text-4xl font-bold font-['Inria Sans']">

@@ -1,3 +1,5 @@
+import logo from "../assets/logo.png";
+
 export default function HomePage() {
   return (
     <div className="w-[1280px] h-[1128px] relative bg-[#fcf8ee] overflow-hidden">
@@ -5,13 +7,8 @@ export default function HomePage() {
         <div className="w-full h-[142px] absolute top-0 left-0 bg-[#88dae7] opacity-50 shadow-md" />
         <img
           className="w-[126px] h-[115px] absolute top-[13px] left-[28px]"
-          src="https://placehold.co/126x115"
+          src={logo.src}
           alt="Club Logo"
-        />
-        <img
-          className="w-[72px] h-[72px] absolute top-[42px] left-[1164px]"
-          src="https://placehold.co/72x72"
-          alt="Menu Icon"
         />
   
         <div className="w-[865px] h-[81px] absolute top-[53px] left-[207px] text-center text-black text-4xl font-bold">

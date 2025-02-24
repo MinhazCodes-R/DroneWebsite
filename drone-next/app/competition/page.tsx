@@ -1,3 +1,4 @@
+import logo from "../assets/logo.png";
 export default function Competition() {
   return (
     <div className="w-[1280px] h-[1038px] relative bg-[#fcf8ee] overflow-hidden">
@@ -5,13 +6,8 @@ export default function Competition() {
       <div className="w-[1280px] h-[142px] left-0 top-0 absolute opacity-50 bg-[#88dae7] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]" />
       <img
         className="w-[126.41px] h-[115px] left-[28px] top-[13px] absolute"
-        src="https://placehold.co/126x115"
+        src={logo.src}
         alt="Club Logo"
-      />
-      <img
-        className="w-[72px] h-[72px] left-[1164px] top-[42px] absolute"
-        src="https://placehold.co/72x72"
-        alt="Menu Icon"
       />
 
       {/* Competition Title */}
