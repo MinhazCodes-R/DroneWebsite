@@ -2,6 +2,25 @@ import logo from "../assets/logo.png";
 
 export default function HomePage() {
   return (
+    <div>
+       <img
+          className="w-[126px] h-[115px] absolute top-[13px] left-[28px]"
+          src={logo.src}
+          alt="Club Logo"
+        />
+
+        <div className="w-[100vw] h-[20px] bg-blue-300"></div>
+
+    </div>
+    );
+  }
+  
+
+
+
+
+export function HomePage2() {
+  return (
     <div className="w-[1280px] h-[1128px] relative bg-[#fcf8ee] overflow-hidden">
         
         <div className="w-full h-[142px] absolute top-0 left-0 bg-[#88dae7] opacity-50 shadow-md" />

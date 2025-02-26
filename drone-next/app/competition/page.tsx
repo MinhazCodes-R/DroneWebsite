@@ -1,53 +1,65 @@
-import logo from "../assets/logo.png";
+import Image from "next/image";
+
+
 export default function Competition() {
   return (
-    <div className="w-[1280px] h-[1038px] relative bg-[#fcf8ee] overflow-hidden">
-      {/*header*/}
-      <div className="w-[1280px] h-[142px] left-0 top-0 absolute opacity-50 bg-[#88dae7] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]" />
-      <img
-        className="w-[126.41px] h-[115px] left-[28px] top-[13px] absolute"
-        src={logo.src}
-        alt="Club Logo"
-      />
+    <div className="min-h-screen flex flex-col items-center px-6 py-12" >
+      {/* Header */}
 
       {/* Competition Title */}
-      <div className="left-[557px] top-[195px] absolute text-[#2364aa] text-3xl font-bold font-['Inria Sans'] underline">
-        Competition
+      <h2 className="text-black text-4xl font-bold mt-10 ">Competition</h2>
+
+      <div>
+
+      <p className="max-w-[987px] text-center text-black text-xl font-normal mt-6">
+        Our team will be working year-round to compete at a high level, starting with the SUAS Canada 
+        competition and eventually advancing to the prestigious International SUAS Competition in the U.S.
+      </p>
+
       </div>
 
-      
-      <div className="w-[1280px] h-[0px] left-0 top-[142px] absolute border border-black"></div>
 
-    
-      <div className="w-[865px] h-[81px] left-[207px] top-[53px] absolute text-center text-black text-4xl font-bold font-['Inria Sans']">
-        McMaster Aerial Robotics & Drones Club
-      </div>
 
-      {/*description*/}
-      <div className="w-[1121px] h-[445px] left-[79px] top-[378px] absolute">
-        <span className="text-black text-[32px] font-bold font-['Inria Sans']">AEAC Student UAS Competition<br /><br /></span>
-        <span className="text-black text-xl font-normal font-['Inria Sans']">
-          Student UAS Competition 2026 is an annual event where student teams design and test unmanned aerial systems (UAS). Teams compete in missions that require autonomous flight, obstacle avoidance, and object detection. The competition offers students a chance to showcase their UAS innovation and engineering skills.<br />
-        </span>
-        <span className="text-black text-xl font-bold font-['Inria Sans'] underline">
-          <a href="https://www.aerialevolution.ca/annual-student-competition/" target="_blank" rel="noopener noreferrer">
-          AEAC Student UAS Competition Details
+      {/* Competition Details */}
+      <div className=" mt-20">
+        {/* AEAC Competition */}
+        <div className="max-w-[1121px] mx-auto space-y-12 p-10 rounded-3xl"  style={{boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px'}}>
+          <h3 className="text-black text-3xl font-bold">AEAC Student UAS Competition</h3>
+          <p className="text-black text-lg mt-2">
+            The Student UAS Competition 2026 is an annual event where student teams design and test 
+            unmanned aerial systems (UAS). Teams compete in missions requiring autonomous flight, 
+            obstacle avoidance, and object detection. This competition provides an opportunity to 
+            showcase UAS innovation and engineering skills.
+          </p>
+          <a
+            href="https://www.aerialevolution.ca/annual-student-competition/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 text-lg font-bold underline hover:text-blue-800 transition-all"
+          >
+            AEAC Student UAS Competition Details
           </a>
-        </span>
-        <br /><br /><br/><br/><br/>
-        <span className="text-black text-[32px] font-bold font-['Inria Sans']">International SUAS Competition<br /><br /></span>
-        <span className="text-black text-xl font-normal font-['Inria Sans']">
-          The International SUAS Competition is a global event that happens annually, where student teams from around the world compete to develop advanced autonomous UAS. The competition challenges teams to complete complex tasks, including autonomous flight and obstacle navigation, providing valuable experience in unmanned systems technology.<br />
-        </span>
-        <span className="text-black text-xl font-bold font-['Inria Sans'] underline">
-          <a href="https://suas-competition.org/" target="_blank" rel="noopener noreferrer">
+        </div>
+        <div className="h-[10vh]"></div>
+
+        {/* International SUAS Competition */}
+        <div className="max-w-[1121px] mx-auto space-y-12 p-20 rounded-3xl"  style={{boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px'}}>
+          <h3 className="text-black text-3xl font-bold">International SUAS Competition</h3>
+          <p className="text-black text-lg mt-2">
+            The International SUAS Competition is a global event where student teams worldwide 
+            compete to develop advanced autonomous UAS. The competition challenges teams with 
+            complex tasks such as autonomous flight and obstacle navigation, providing valuable 
+            experience in unmanned systems technology.
+          </p>
+          <a
+            href="https://suas-competition.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 text-lg font-bold underline hover:text-blue-800 transition-all"
+          >
             International SUAS Competition Details
           </a>
-        </span>
-      </div>
-
-      <div className="w-[987px] h-[71px] left-[146px] top-[245px] absolute text-center text-black text-xl font-normal font-['Inria Sans']">
-        Our team will be working year round on preparing to compete at a high level, starting with the SUAS Canada competition and eventually advancing to the prestigious International SUAS Competition in the U.S.
+        </div>
       </div>
     </div>
   );

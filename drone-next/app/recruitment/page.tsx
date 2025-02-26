@@ -2,25 +2,8 @@ import React from "react";
 import logo from "../assets/logo.png";
 export default function Recruitment() {
   return (
-    <div className="w-[1280px] h-[1158px] relative bg-[#fcf8ee] overflow-hidden">
-     
-      <div className="w-full h-[142px] absolute top-0 left-0 bg-[#88dae7] opacity-50 shadow-md" />
-      <img
-        className="w-[126px] h-[115px] absolute top-[13px] left-[28px]"
-        src={logo.src}
-        alt="Club Logo"
-      />
+    <div className="w-[1280px] h-[1158px] relative bg-white overflow-hidden">
 
-
-      <div className="w-[865px] h-[81px] absolute top-[53px] left-[207px] text-center text-black text-4xl font-bold">
-        McMaster Aerial Robotics & Drones Club
-      </div>
-
-      <div className="left-[556px] top-[195px] absolute text-[#2364aa] text-3xl font-bold font-['Inria Sans'] underline">
-        Recruitment
-      </div>
-
-      <div className="w-[1280px] h-[0px] left-0 top-[142px] absolute border border-black"></div>
 
       {/*info*/}
       <div className="w-[1030px] h-[71px] left-[125px] top-[284px] absolute text-center">
