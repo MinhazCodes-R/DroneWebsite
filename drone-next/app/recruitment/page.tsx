@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../assets/logo.png";
 export default function Recruitment() {
   return (
-    <div className="w-[1280px] h-[1158px] relative bg-white overflow-hidden">
+    <div className="w-[1280px] h-[90vh] relative bg-white overflow-hidden">
 
 
       {/*info*/}
