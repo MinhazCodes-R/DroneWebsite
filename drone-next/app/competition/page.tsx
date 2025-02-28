@@ -3,11 +3,11 @@ import Image from "next/image";
 
 export default function Competition() {
   return (
-    <div className="min-h-screen flex flex-col items-center px-6 py-12" >
+    <div className="min-h-screen flex flex-col items-center px-6 py-16 bg-white-100" >
       {/* Header */}
 
       {/* Competition Title */}
-      <h2 className="text-black text-4xl font-bold mt-10 ">Competition</h2>
+      <h2 className="text-5xl font-bold text-gray-900 mb-8 text-center">Competition</h2>
 
       <div>
 
