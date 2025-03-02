@@ -10,15 +10,15 @@ export default function Sponsors() {
       </h1>
 
       {/* Sponsor Info */}
-      <div className="max-w-3xl text-center text-white text-2xl font-normal mb-12">
+      <div className="max-w-3xl text-center text-white text-xl font-normal mb-12">
         We are always looking for and welcoming sponsors to support our mission of innovation and
         hands-on learning in aerial robotics! Sponsorship helps us design and build advanced drones,
         compete in high-level competitions, and provide valuable opportunities for students.
       </div>
 
       <p className="max-w-2xl text-center text-white text-xl mb-12">
-        In return, we offer **brand exposure, collaboration, and a chance to support the next
-        generation of engineers**. If you're interested in partnering with us, we'd love to connect!
+        In return, we offer <b>brand exposure, collaboration, and a chance to support the next
+        generation of engineers</b>. If you're interested in partnering with us, we'd love to connect!
       </p>
 
       {/* Call to Action */}

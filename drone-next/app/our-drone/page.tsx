@@ -22,8 +22,8 @@ export default function OurDrone() {
         {/* Drone Image */}
         <div className="w-full flex justify-center mt-8 sm:mb-12">
           <Image
-            className="rounded-lg shadow-lg"
-            src={pcb}
+            className="rounded-2xl shadow-lg"
+            src={"/sitePictures/drone.jpeg"}
             alt="Drone Image"
             width={400}
             height={350}

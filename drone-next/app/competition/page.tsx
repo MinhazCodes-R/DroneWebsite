@@ -7,7 +7,9 @@ export default function Competition() {
       {/* Header */}
 
       {/* Competition Title */}
-      <h2 className="text-5xl font-bold text-gray-900 mb-8 text-center">Competition</h2>
+      <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-gray-900 mb-6 sm:mb-8 underline text-center">
+      Competitions
+        </h1>
 
       <div>
 

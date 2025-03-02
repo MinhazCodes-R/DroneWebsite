@@ -1,6 +1,14 @@
 export default function Page() {
   return (
     <>
+      {/* About Us Title */}
+      <div className="w-full text-center py-10 bg-gray-100">
+      {/* <h1 className="text-5xl font-bold text-gray-900 mb-8 text-center">About Us</h1> */}
+      <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-gray-900 mb-6 sm:mb-8 underline text-center">
+      About Us
+        </h1>
+      </div>
+
       {/* Vision Section */}
       <div className="bg-gradient-to-b from-gray-200 to-white w-full">
         <div className="max-w-[1280px] w-full mx-auto relative p-6 md:p-10">
@@ -9,7 +17,7 @@ export default function Page() {
             <br />
             <img
               className="w-full max-w-[196px] md:w-[196px] rounded-[30px] mb-6 md:mb-0"
-              src="https://picsum.photos/196/195"
+              src="/sitePictures/fady_workshop.jpeg"
               alt="Vision Image"
             />
 
@@ -53,8 +61,8 @@ export default function Page() {
           {/* Goals Image */}
           <div className="w-full md:w-[30%] flex justify-center md:justify-end my-10 md:my-16">
             <img
-              className="w-full max-w-[300px] md:w-[400px] h-auto md:h-60 rounded-[30px]"
-              src="https://picsum.photos/400/300"
+              className="h-auto md:h-72 rounded-[30px]"
+              src="/sitePictures/firstTeamMeet.jpeg"
               alt="Goals Image"
             />
           </div>

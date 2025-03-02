@@ -52,7 +52,10 @@ export default function MeetOurTeam() {
   return (
     <div className="min-h-screen flex flex-col items-center px-6 py-16 bg-white-100">
       {/* Page Title - Adjusted to Match Other Pages */}
-      <h1 className="text-5xl font-bold text-gray-900 mb-8 text-center">Meet The Team</h1>
+      {/* <h1 className="text-5xl font-bold text-gray-900 mb-8 text-center">Meet The Team</h1> */}
+      <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-gray-900 mb-6 sm:mb-8 underline text-center">
+      Meet The Team
+        </h1>
 
       {/* Team Members */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mt-12 max-w-[1280px] w-full px-4">
