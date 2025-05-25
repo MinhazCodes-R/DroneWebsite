@@ -22,19 +22,19 @@ export default function ContactUs() {
           {/* Contact Details */}
           <div className="space-y-4">
             <div className="flex items-center space-x-4">
-              <span className="text-gray-900 text-xl font-semibold">📍 Location:</span>
-              <p className="text-gray-700">Somewhere at McMaster</p>
+              <span className="text-gray-900 text-l font-semibold">📍 Location:</span>
+              <p className="text-gray-700">Information Technology at McMaster University</p>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-gray-900 text-xl font-semibold">📧 Email:</span>
-              <a href="mailto:ourcontact@gmail.com" className="text-blue-600 underline">
-                ourcontact@gmail.com
+              <span className="text-gray-900 text-l font-semibold">📧 Email:</span>
+              <a href="mailto:drone@mcmaster.ca" className="text-blue-600 underline">
+                drone@mcmaster.ca
               </a>
             </div>
-            <div className="flex items-center space-x-4">
+            {/* <div className="flex items-center space-x-4">
               <span className="text-gray-900 text-xl font-semibold">📞 Phone:</span>
               <p className="text-gray-700">Some number</p>
-            </div>
+            </div> */}
           </div>
 
           {/* Social Media Links */}
