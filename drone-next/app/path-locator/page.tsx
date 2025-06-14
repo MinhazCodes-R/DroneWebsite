@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Sidebar from './sidebar';
 import {
   addPoint,
@@ -9,6 +9,7 @@ import {
   removePoint,
   removeLine,
   loadFromStorage,
+  syncWithBackend,
 } from './mapFunctions';
 
 const MapView = dynamic(() => import('./mapView'), { ssr: false });
@@ -19,23 +20,28 @@ export default function HomePage() {
   const [mode, setMode] = useState('add');
   const [selectedForLine, setSelectedForLine] = useState<string[]>([]);
 
-  const handleMapClick = (latlng: { lat: number; lng: number }) => {
+  // Sync with backend on component mount
+  useEffect(() => {
+    syncWithBackend(setPoints, setLines);
+  }, []);
+
+  const handleMapClick = async (latlng: { lat: number; lng: number }) => {
     if (mode === 'add') {
-      addPoint(points, setPoints, latlng.lat, latlng.lng);
+      await addPoint(points, setPoints, setLines, latlng.lat, latlng.lng);
     }
   };
 
-  const handlePointClick = (pointId: string) => {
+  const handlePointClick = async (pointId: string) => {
     if (mode === 'line') {
       const newSelected = [...selectedForLine, pointId];
       if (newSelected.length === 2) {
-        addLine(lines, setLines, newSelected[0], newSelected[1]);
+        await addLine(lines, setLines, setPoints, newSelected[0], newSelected[1]);
         setSelectedForLine([]);
       } else {
         setSelectedForLine(newSelected);
       }
     } else if (mode === 'remove') {
-      removePoint(points, setPoints, lines, setLines, pointId);
+      await removePoint(points, setPoints, lines, setLines, pointId);
     }
   };
 

@@ -14,41 +14,44 @@ export const loadFromStorage = (key: string): Set<string> => {
   }
 };
 
-export const addPoint = (
+export const addPoint = async (
   points: Set<string>,
   setPoints: (p: Set<string>) => void,
+  setLines: (l: Set<string>) => void,
   lat: number,
   lng: number
-): string => {
+): Promise<string> => {
   const pointId = `${lat.toFixed(6)},${lng.toFixed(6)}`;
-  const newPoints = new Set([...points, pointId]);
-  setPoints(newPoints);
-  saveToStorage('mapPoints', newPoints);
-
-  axios.post('/api/add-point', { pointId, lat, lng }).catch(console.error);
+  
+  try {
+    await axios.get(`/api/add-point?pointId=${encodeURIComponent(pointId)}&lat=${lat}&lng=${lng}`);
+    // Sync with backend after adding
+    await syncWithBackend(setPoints, setLines);
+  } catch (err) {
+    console.error('Error adding point:', err);
+  }
+  
   return pointId;
 };
 
-export const addLine = (
+export const addLine = async (
   lines: Set<string>,
   setLines: (l: Set<string>) => void,
+  setPoints: (p: Set<string>) => void,
   start: string,
   end: string
-): string | null => {
+): Promise<string | null> => {
   const lineId = `${start}|${end}`;
   const reverseLineId = `${end}|${start}`;
   if (!lines.has(lineId) && !lines.has(reverseLineId)) {
-    const newLines = new Set([...lines, lineId]);
-    setLines(newLines);
-    saveToStorage('mapLines', newLines);
-    axios
-      .post('/api/add-line', {
-        lineId,
-        start_point_id: start,
-        end_point_id: end,
-      })
-      .catch(console.error);
-    return lineId;
+    try {
+      await axios.get(`/api/add-line?lineId=${encodeURIComponent(lineId)}&start_point_id=${encodeURIComponent(start)}&end_point_id=${encodeURIComponent(end)}`);
+      // Sync with backend after adding
+      await syncWithBackend(setPoints, setLines);
+      return lineId;
+    } catch (err) {
+      console.error('Error adding line:', err);
+    }
   }
   return null;
 };
@@ -60,37 +63,42 @@ export const removePoint = async (
   setLines: (l: Set<string>) => void,
   pointId: string
 ) => {
-  const newPoints = new Set(points);
-  newPoints.delete(pointId);
-  setPoints(newPoints);
+  try {
+    // Remove associated lines first
+    const linesToRemove = Array.from(lines).filter(line => {
+      const [start, end] = line.split('|');
+      return start === pointId || end === pointId;
+    });
 
-  const newLines = new Set<string>();
-  lines.forEach(line => {
-    const [start, end] = line.split('|');
-    if (start !== pointId && end !== pointId) {
-      newLines.add(line);
-    } else {
-      axios.post('/api/remove-line', { lineId: line }).catch(console.error);
-    }
-  });
+    await Promise.all(
+      linesToRemove.map(line =>
+        axios.get(`/api/remove-line?lineId=${encodeURIComponent(line)}`)
+      )
+    );
 
-  setLines(newLines);
-  axios.post('/api/remove-point', { pointId }).catch(console.error);
-
-  saveToStorage('mapPoints', newPoints);
-  saveToStorage('mapLines', newLines);
+    // Remove the point
+    await axios.get(`/api/remove-point?pointId=${encodeURIComponent(pointId)}`);
+    
+    // Sync with backend after removing
+    await syncWithBackend(setPoints, setLines);
+  } catch (err) {
+    console.error('Error removing point:', err);
+  }
 };
 
 export const removeLine = async (
   lines: Set<string>,
   setLines: (l: Set<string>) => void,
+  setPoints: (p: Set<string>) => void,
   lineId: string
 ) => {
-  const newLines = new Set(lines);
-  newLines.delete(lineId);
-  setLines(newLines);
-  axios.post('/api/remove-line', { lineId }).catch(console.error);
-  saveToStorage('mapLines', newLines);
+  try {
+    await axios.get(`/api/remove-line?lineId=${encodeURIComponent(lineId)}`);
+    // Sync with backend after removing
+    await syncWithBackend(setPoints, setLines);
+  } catch (err) {
+    console.error('Error removing line:', err);
+  }
 };
 
 export const parseCoords = (pointId: string): [number, number] => {
@@ -124,34 +132,36 @@ export const clearAll = async (
   lines: Set<string>,
   setLines: (l: Set<string>) => void
 ) => {
-  await Promise.all(
-    [...lines].map(lineId =>
-      axios.post('/api/remove-line', { lineId }).catch(console.error)
-    )
-  );
+  try {
+    await Promise.all(
+      [...lines].map(lineId =>
+        axios.get(`/api/remove-line?lineId=${encodeURIComponent(lineId)}`)
+      )
+    );
 
-  await Promise.all(
-    [...points].map(pointId =>
-      axios.post('/api/remove-point', { pointId }).catch(console.error)
-    )
-  );
+    await Promise.all(
+      [...points].map(pointId =>
+        axios.get(`/api/remove-point?pointId=${encodeURIComponent(pointId)}`)
+      )
+    );
 
-  const newPoints = new Set<string>();
-  const newLines = new Set<string>();
-  setPoints(newPoints);
-  setLines(newLines);
-  saveToStorage('mapPoints', newPoints);
-  saveToStorage('mapLines', newLines);
-  sessionStorage.removeItem('savedPoints');
-  sessionStorage.removeItem('savedLines');
+    // Sync with backend after clearing
+    await syncWithBackend(setPoints, setLines);
+    
+    sessionStorage.removeItem('savedPoints');
+    sessionStorage.removeItem('savedLines');
+  } catch (err) {
+    console.error('Error clearing all:', err);
+  }
 };
 
-export const addPointFromText = (
+export const addPointFromText = async (
   points: Set<string>,
   setPoints: (p: Set<string>) => void,
+  setLines: (l: Set<string>) => void,
   latText: string,
   lngText: string
-): { success: boolean; pointId?: string; error?: string } => {
+): Promise<{ success: boolean; pointId?: string; error?: string }> => {
   const lat = parseFloat(latText);
   const lng = parseFloat(lngText);
 
@@ -159,6 +169,29 @@ export const addPointFromText = (
   if (lat < -90 || lat > 90) return { success: false, error: 'Latitude must be between -90 and 90' };
   if (lng < -180 || lng > 180) return { success: false, error: 'Longitude must be between -180 and 180' };
 
-  const pointId = addPoint(points, setPoints, lat, lng);
+  const pointId = await addPoint(points, setPoints, setLines, lat, lng);
   return { success: true, pointId };
+};
+
+// Fetch data from backend
+export const syncWithBackend = async (
+  setPoints: (p: Set<string>) => void,
+  setLines: (l: Set<string>) => void
+) => {
+  try {
+    const [pointsResponse, linesResponse] = await Promise.all([
+      axios.get('/api/get-points'),
+      axios.get('/api/get-lines')
+    ]);
+
+    const pointsSet = new Set<string>(pointsResponse.data.points.map((p: any) => p.pointId));
+    const linesSet = new Set<string>(linesResponse.data.lines.map((l: any) => l.lineId));
+
+    setPoints(pointsSet);
+    setLines(linesSet);
+    saveToStorage('mapPoints', pointsSet);
+    saveToStorage('mapLines', linesSet);
+  } catch (err) {
+    console.error('Error syncing with backend:', err);
+  }
 };

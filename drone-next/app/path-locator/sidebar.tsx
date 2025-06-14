@@ -9,6 +9,7 @@ import {
   restoreLine,
   addPointFromText,
   clearAll,
+  syncWithBackend,
 } from './mapFunctions';
 
 interface SidebarProps {
@@ -58,8 +59,8 @@ export default function Sidebar({ mode, setMode, points, setPoints, lines, setLi
     sessionStorage.setItem('savedLines', JSON.stringify(Array.from(newSaved)));
   };
 
-  const handleAddPointFromText = () => {
-    const result = addPointFromText(points, setPoints, latInput, lngInput);
+  const handleAddPointFromText = async () => {
+    const result = await addPointFromText(points, setPoints, setLines, latInput, lngInput);
     if (result.success) {
       setLatInput('');
       setLngInput('');
@@ -128,9 +129,16 @@ export default function Sidebar({ mode, setMode, points, setPoints, lines, setLi
 
       <button
         onClick={() => clearAll(points, setPoints, lines, setLines)}
-        className="w-full bg-red-600 text-white py-2 mb-6 rounded hover:bg-red-700"
+        className="w-full bg-red-600 text-white py-2 mb-3 rounded hover:bg-red-700"
       >
         Clear All
+      </button>
+
+      <button
+        onClick={() => syncWithBackend(setPoints, setLines)}
+        className="w-full bg-blue-600 text-white py-2 mb-6 rounded hover:bg-blue-700"
+      >
+        Sync with Backend
       </button>
 
       {/* Saved Points */}
@@ -213,7 +221,7 @@ export default function Sidebar({ mode, setMode, points, setPoints, lines, setLi
                   Save
                 </button>
                 <button
-                  onClick={() => removeLine(lines, setLines, lineId)}
+                  onClick={() => removeLine(lines, setLines, setPoints, lineId)}
                   className="bg-red-500 text-white px-3 py-1 rounded text-xs hover:bg-red-600"
                 >
                   Remove
