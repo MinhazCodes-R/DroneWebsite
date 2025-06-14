@@ -20,7 +20,6 @@ export default function HomePage() {
   const [mode, setMode] = useState('add');
   const [selectedForLine, setSelectedForLine] = useState<string[]>([]);
 
-  // Sync with backend on component mount
   useEffect(() => {
     syncWithBackend(setPoints, setLines);
   }, []);

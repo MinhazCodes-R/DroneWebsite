@@ -79,7 +79,7 @@ export default function LeafletMap(props: Props) {
               eventHandlers={{
                 click: () => {
                   if (props.mode === 'remove') {
-                    removeLine(props.lines, props.setLines, lineId);
+                    removeLine(props.lines, props.setLines, props.setPoints, lineId);
                   }
                 }
               }}

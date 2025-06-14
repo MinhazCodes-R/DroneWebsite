@@ -25,10 +25,10 @@ export default function Sidebar({ mode, setMode, points, setPoints, lines, setLi
   const [latInput, setLatInput] = useState('');
   const [lngInput, setLngInput] = useState('');
   const [inputError, setInputError] = useState('');
-  const [mounted, setMounted] = useState(false); // ✅ add this
+  const [mounted, setMounted] = useState(false); 
 
   useEffect(() => {
-    setMounted(true); // ✅ only run on client
+    setMounted(true);
   }, []);
 
   const [savedPoints, setSavedPoints] = useState<Set<string>>(new Set());
