@@ -1,11 +1,11 @@
 import { Pool } from 'pg';
 
 const pool = new Pool({
-  user: process.env.PGUSER,
-  host: process.env.PGHOST,
-  database: process.env.PGDATABASE,
-//   password: process.env.PGPASSWORD,
-  port: Number(process.env.PGPORT),
+  user: process.env.PGUSER || 'drone_user',
+  host: process.env.PGHOST || 'localhost',
+  database: process.env.PGDATABASE || 'drone_db',
+  password: process.env.PGPASSWORD || 'drone_password',
+  port: Number(process.env.PGPORT) || 5432,
 });
 
 export default pool;

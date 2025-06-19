@@ -2,36 +2,54 @@ version: "3.8"
 
 services:
   postgres:
-    image: postgres
+    image: postgres:15-alpine
+    container_name: drone-postgres
     environment:
-      POSTGRES_DB: mydb
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: drone_db
+      POSTGRES_USER: drone_user
+      POSTGRES_PASSWORD: drone_password
     volumes:
-      - ./data/db:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres-init:/docker-entrypoint-initdb.d
     ports:
-      - "5433:5432"
+      - "5432:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -p 5432 -U myuser -d mydb"]
-
-      interval: 1s
-      timeout: 1s
+      test: ["CMD-SHELL", "pg_isready -p 5432 -U drone_user -d drone_db"]
+      interval: 10s
+      timeout: 5s
       retries: 5
       start_period: 30s
-
+    networks:
+      - drone_network
 
   webapp:
     build: 
       context: ./drone-next
-      dockerfile: ../drone-next/dockerfile
-    volumes:
-      
+      dockerfile: Dockerfile
+    container_name: drone-webapp
+    environment:
+      - NODE_ENV=production
+      - PGUSER=drone_user
+      - PGHOST=postgres
+      - PGDATABASE=drone_db
+      - PGPASSWORD=drone_password
+      - PGPORT=5432
     depends_on:
       postgres:
         condition: service_healthy
-
     ports:
       - '3000:3000'
+    networks:
+      - drone_network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  drone_network:
+    driver: bridge
 
 
 
