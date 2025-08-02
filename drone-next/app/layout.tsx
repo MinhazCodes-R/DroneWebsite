@@ -1,7 +1,7 @@
 import "./globals.css";
 import Header from "../components/myComponents/header";
 export const metadata = {
-  title: "MacMaster Drone Team",
+  title: "McMaster Drone Team",
   description: "Explore the future of aerial technology with Mac Drones.",
   icons: {
     icon: "/favicon.png", // Make sure favicon.ico is in the public folder
