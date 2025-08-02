@@ -3,7 +3,7 @@ import React from "react";
 export default function Sponsors() {
   return (
     <div className="min-h-screen min-w-[100vw] bg-[radial-gradient(circle,_rgba(80,80,80,1)_10%,_rgba(30,30,30,1)_90%)] flex flex-col items-center px-6 py-16">
-      
+
       {/* Section Title */}
       <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-300 to-white mb-8">
         Our Sponsors
@@ -18,14 +18,14 @@ export default function Sponsors() {
 
       <p className="max-w-2xl text-center text-white text-xl mb-12">
         In return, we offer <b>brand exposure, collaboration, and a chance to support the next
-        generation of engineers</b>. If you're interested in partnering with us, we'd love to connect!
+          generation of engineers</b>. If you're interested in partnering with us, we'd love to connect!
       </p>
 
       {/* Call to Action */}
       <div className="mt-6">
-        <a 
+        <a
           href="mailto:your_email@example.com"
-          className="px-6 py-3 bg-gradient-to-r from-gray-900 to-black text-white text-lg rounded-lg shadow-md hover:shadow-lg transition duration-300"
+          className="px-6 py-3 bg-gradient-to-r from-gray-900 to-black text-white text-lg rounded-2xl shadow-md hover:shadow-lg transition duration-300"
         >
           Become a Sponsor
         </a>
