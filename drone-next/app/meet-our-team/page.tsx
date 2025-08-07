@@ -23,20 +23,6 @@ export default function MeetOurTeam() {
       image: "/headshots/fady.jpeg",
     },
     {
-      name: "Amber Morrison",
-      role: "Administrator, Media & Fundraising Team Lead",
-      major: "iBioMed and Mechanical Engineering III",
-      email: "morria71@mcmaster.ca",
-      image: "/headshots/amber.png",
-    },
-    {
-      name: "Subodh Thallada",
-      role: "Mechanical Team Lead",
-      major: "Engineering II",
-      email: "thallads@mcmaster.ca",
-      image: "/headshots/subodh.jpg",
-    },
-    {
       name: "Minhaz Rakin",
       role: "Software Team Lead",
       major: "Computer Engineering III",
@@ -49,6 +35,41 @@ export default function MeetOurTeam() {
       major: "Software Engineering III",
       email: "gupts38@mcmaster.ca",
       image: "/headshots/sachin.jpeg",
+    },
+    {
+      name: "Emily Moonin",
+      role: "Media & Fundraising Team Lead Co-Lead",
+      major: "iBioMed and Mechanical Engineering II",
+      email: "moonine@mcmaster.ca",
+      image: "/headshots/Emily.png",
+    },
+    {
+      name: "Aaron Zhao",
+      role: "Mechanical Team Co-Lead",
+      major: "Mechanical Engineering III",
+      email: "zhaoa38@mcmaster.ca",
+      image: "/headshots/Aaron.png",
+    },
+    {
+      name: "Naomi CG",
+      role: "Media & Fundraising Team Lead Co-Lead",
+      major: "iBioMed and Mechanical Engineering II",
+      email: "couturen@mcmaster.ca",
+      image: "/headshots/Naomi.png",
+    },
+     {
+      name: "Taysir Alam",
+      role: "Electrical Team Co-Lead",
+      major: "Electrical Engineering III",
+      email: "alamt10@mcmaster.ca",
+      image: "/headshots/Taysir.png",
+    },
+    {
+      name: "Cristina IS",
+      role: "Mechanical Team Co-Lead",
+      major: "Mechanical Engineering III",
+      email: "irassarc@mcmaster.ca",
+      image: "/headshots/Cristina.png",
     },
   ];
 
