@@ -60,7 +60,7 @@ export default function MeetOurTeam() {
      {
       name: "Taysir Alam",
       role: "Electrical Team Co-Lead",
-      major: "Electrical Engineering III",
+      major: "Automation Sys Eng Tech IV",
       email: "alamt10@mcmaster.ca",
       image: "/headshots/Taysir.png",
     },
