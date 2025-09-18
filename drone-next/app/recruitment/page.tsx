@@ -24,31 +24,31 @@ export default function Recruitment() {
 
         <div className="flex justify-between items-center mb-10 max-w-2xl mx-auto">
           <div className="text-center">
-            <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-3xl hover:bg-blue-200 transition-all duration-300 cursor-pointer transform hover:scale-110 shadow-lg mx-auto mb-3">
+            <div className="w-14 h-14 md:w-20 md:h-20 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-3xl hover:bg-blue-200 transition-all duration-300 cursor-pointer transform hover:scale-110 shadow-lg mx-auto mb-3">
               <FaCode />
             </div>
-            <span className="text-sm font-medium text-gray-700">Software</span>
+            <span className="hidden md:block text-sm font-medium text-gray-700">Software</span>
           </div>
 
           <div className="text-center">
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-3xl hover:bg-green-200 transition-all duration-300 cursor-pointer transform hover:scale-110 shadow-lg mx-auto mb-3">
+            <div className="w-14 h-14 md:w-20 md:h-20 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-3xl hover:bg-green-200 transition-all duration-300 cursor-pointer transform hover:scale-110 shadow-lg mx-auto mb-3">
               <MdElectricalServices />
             </div>
-            <span className="text-sm font-medium text-gray-700">Electrical</span>
+            <span className="hidden md:block text-sm font-medium text-gray-700">Electrical</span>
           </div>
 
           <div className="text-center">
-            <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 text-3xl hover:bg-purple-200 transition-all duration-300 cursor-pointer transform hover:scale-110 shadow-lg mx-auto mb-3">
+            <div className="w-14 h-14 md:w-20 md:h-20 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 text-3xl hover:bg-purple-200 transition-all duration-300 cursor-pointer transform hover:scale-110 shadow-lg mx-auto mb-3">
               <FaCog />
             </div>
-            <span className="text-sm font-medium text-gray-700">Mechanical</span>
+            <span className="hidden md:block text-sm font-medium text-gray-700">Mechanical</span>
           </div>
 
           <div className="text-center">
-            <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 text-3xl hover:bg-orange-200 transition-all duration-300 cursor-pointer transform hover:scale-110 shadow-lg mx-auto mb-3">
+            <div className="w-14 h-14 md:w-20 md:h-20 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 text-3xl hover:bg-orange-200 transition-all duration-300 cursor-pointer transform hover:scale-110 shadow-lg mx-auto mb-3">
               <FaBullhorn />
             </div>
-            <span className="text-sm font-medium text-gray-700">Media & Fundraising</span>
+            <span className="hidden md:block text-sm font-medium text-gray-700">Media & Fundraising</span>
           </div>
         </div>
 

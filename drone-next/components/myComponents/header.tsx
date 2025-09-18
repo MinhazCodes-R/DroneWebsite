@@ -88,9 +88,21 @@ import {
             </Link>
           </li>
           <li>
-            <Link onClick={close} href="./contact-us" className="flex items-center space-x-3 p-3  rounded-xl bg-white shadow-sm hover:bg-gray-50 transition-colors duration-200">
+            <Link onClick={close} href="./recruitment" className="flex items-center space-x-3 p-3  rounded-xl bg-white shadow-sm hover:bg-gray-50 transition-colors duration-200">
            
               <span className="font-medium">Recruitment</span>
+            </Link>
+          </li>
+          <li>
+            <Link onClick={close} href="./sponsors" className="flex items-center space-x-3 p-3  rounded-xl bg-white shadow-sm hover:bg-gray-50 transition-colors duration-200">
+           
+              <span className="font-medium">Sponsors</span>
+            </Link>
+          </li>
+          <li>
+            <Link onClick={close} href="./contact-us" className="flex items-center space-x-3 p-3  rounded-xl bg-white shadow-sm hover:bg-gray-50 transition-colors duration-200">
+           
+              <span className="font-medium">Contact Us</span>
             </Link>
           </li>
           
