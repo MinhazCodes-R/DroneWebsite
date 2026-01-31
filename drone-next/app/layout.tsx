@@ -1,5 +1,6 @@
 import "./globals.css";
 import Header from "../components/myComponents/header";
+import { Analytics } from "@vercel/analytics/next";
 export const metadata = {
   title: "McMaster Drone Team",
   description: "Explore the future of aerial technology with Mac Drones.",
@@ -38,6 +39,7 @@ export default function RootLayout({
         </div>
 
         <main className="pt-[60px]">{children}</main>
+        <Analytics />
       </body>
     </html>
   );
